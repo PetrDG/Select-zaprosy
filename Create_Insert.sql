@@ -3,6 +3,7 @@ create table if not exists genres (
 	name_genre varchar(40) unique not null
 );
 
+
 create table if not exists artist (
 	id serial primary key,
 	name_artist varchar(40) unique not null
@@ -20,7 +21,7 @@ create table if not exists album (
 	year_album varchar(4) not null,	
 	name_album varchar(40) not null
 );
- 
+
 create table if not exists artist_album (
 	id serial primary key,
 	artist_id integer not null references artist(id),
@@ -31,13 +32,13 @@ create table if not exists tracks (
 	id serial primary key,
 	id_album integer references album(id) not null,
 	name_tracks varchar(40) not null,
-	time_tracks varchar(15) not null
+	time_tracks integer not null
 );
 
 create table if not exists collection_of_songs (
 	id serial primary key,
 	name_collection varchar(40) not null,
-	year_collection varchar(4) not null
+	year_collection integer not null
 );
 
 create table if not exists songs_in_the_collection (
@@ -56,6 +57,7 @@ insert into artist(name_artist)
 	('Клава Кока'),
 	('MARUV'),
 	('Tiesto');
+
 
 insert into genres(name_genre)
 	values
@@ -102,26 +104,26 @@ insert into artist_album(artist_id, album_id)
 	(6, 16),
 	(7, 17),
 	(8, 18);
-	
+
 insert into tracks(id_album, name_tracks, time_tracks)
 	values
-	(11, 'Beautiful Trauma', '4:10'),
-	(11, 'What About Us', '4:29'),
-	(12, 'Omen', '3:36'),
-	(12, 'Warrior’s Dance', '5:12'),
-	(13, 'Faint', '2:42'),
-	(13, 'Breaking the Habit', '3:16'),
-	(13, 'Numb', '3:08'),
-	(14, 'Faradenza', '2:29'),
-	(14, 'Lolly Bomb', '3:53'),
-	(15, 'No Scrubs', '3:34'),
-	(16, 'Влюблена в МДК', '3:07'),
-	(16, 'Мне пох', '2:38'),
-	(16, 'Зая', '2:41'),
-	(17, 'Drunk Groove', '3:46'),
-	(17, 'Black Water', '3:49'),
-	(17, 'Focus On Me', '2:55'),
-	(18, 'Traffic', '5:28');
+	(11, 'Beautiful Trauma', 270),
+	(11, 'What About Us', 269),
+	(12, 'Omen', 216),
+	(12, 'Warrior’s Dance', 312),
+	(13, 'Faint', 162),
+	(13, 'Breaking the Habit', 196),
+	(13, 'Numb', 188),
+	(14, 'Faradenza', 149),
+	(14, 'Lolly Bomb', 333),
+	(15, 'No Scrubs', 214),
+	(16, 'Влюблена в МДК', 187),
+	(16, 'Мне пох', 158),
+	(16, 'Зая', 161),
+	(17, 'Drunk Groove', 226),
+	(17, 'Black Water', 229),
+	(17, 'Focus On Me', 175),
+	(18, 'Traffic', 328);
 
 insert into collection_of_songs(name_collection, year_collection)
 	values
